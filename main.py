@@ -1,6 +1,11 @@
 from datetime import datetime, timedelta
 import subprocess
 from PIL import Image
+import os
+
+def init_repository():
+    if not os.path.isdir(".git"):
+        subprocess.run(["git", "init"])
 
 def create_commit(date: datetime):
     dateStr = date.strftime("%a %b %d %I:%M %Y +0700")
@@ -49,6 +54,7 @@ def get_commit_date(startDate, weeks, day):
     return startDate + timedelta(weeks=weeks, days=day)
 
 def main(img_name):
+    init_repository()
     base_date = get_start_date()
     print(f"Base date: {base_date}")
     pixels = read_image(img_name)
