@@ -10,7 +10,7 @@ def init_repository():
 def create_commit(date: datetime):
     dateStr = date.strftime("%a %b %d %I:%M %Y +0700")
     with open("test.txt", "a") as f:
-        f.write("aaaaa")
+        f.write("a")
     subprocess.run(["git", "add", "test.txt"])
     subprocess.run(["git", "commit", "-m", "some stuff",])
     subprocess.run(["git", "commit", "--amend", "-m", "some stuff", f'--date="{dateStr}"',])
